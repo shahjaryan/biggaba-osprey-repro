@@ -193,3 +193,98 @@ parameter tuning. Every parameter change made after seeing results goes in
 - **Bearing on the headline claim:** central. Reporting a 2.7x difference as a
   finding without resolving this would be the single worst error available in
   this project.
+
+### D-09 — GABA / co-edited MM partition is degenerate (site S1, n=12)
+
+- **Observed:** Osprey's `GABA` estimate collapses to ~0 in 7 of 12 subjects
+  (0.0000, 0.0002, 0.0009, 0.0078, 0.0111, 0.0131, 0.0147) while `MM09` absorbs
+  the corresponding signal. In one subject (#5) the partition flips: GABA 0.2047,
+  MM09 0.0982.
+- **Diagnostic pattern:** the SUM is stable while its COMPONENTS are not.
+
+  | quantity | mean | SD | CV |
+  |---|---|---|---|
+  | GABAplus | 0.2789 | 0.0371 | 13.3% |
+  | GABA     | 0.0540 | 0.0699 | 129.3% |
+  | MM09     | 0.2249 | 0.0549 | 24.4% |
+  | Glx      | 1.6341 | 0.1378 | 8.4% |
+
+  A well-determined total with an ill-determined split is the signature of
+  collinearity between the two basis functions.
+- **Mechanism:** GABA and co-edited MM3 both sit at ~3.0 ppm and overlap heavily.
+  At 3T with standard MEGA-PRESS they are not separable — which is precisely why
+  the literature reports "GABA+" rather than GABA. Consistent with the large
+  number of "Positive dir derivative in projection / Using the backtracking step"
+  messages during fitting: the optimizer traversing a flat valley.
+- **Attributable to:** a known physical limitation of the acquisition, surfaced by
+  Osprey's attempt to model the two components separately. NOT a defect.
+- **Consequences:**
+  1. **`GABAplus` is the only comparable quantity.** Any analysis using Osprey's
+     `GABA` column would report numerical noise. Locked.
+  2. `opts.fit.coMM3` is directly implicated (the '3to2MM' constraint ties MM3co
+     to MM09). This raises the priority of the MM3 sensitivity analysis.
+  3. Plausibly a contributor to Craven et al.'s ICC of 0.38 across algorithms —
+     if the GABA/MM split is under-determined, different algorithms will resolve
+     it differently while all fitting the data comparably well.
+- **Bearing on the headline claim:** significant, and possibly the most
+  interesting result available. If the total is reproducible while the
+  partition is not, that is a precise and useful statement about what
+  edited MRS at 3T can and cannot measure.
+
+### D-10 — Water reference fit is ill-conditioned in all 12 datasets
+
+- **Observed:** every water fit reports `Df(x)` = NaN, `relDf(x)` = NaN,
+  `rho` = NaN, largest eigenvalue ~1e11-6e11, lambda 1e5-1e7, terminating on
+  "absolute step size".
+- **Attributable to:** unknown; systematic rather than dataset-specific.
+- **Bearing:** none on Phase 1 (creatine-referenced). **Blocking for Phase 2**
+  (water-referenced, Big GABA II targets). Must be understood before that work
+  begins.
+
+### D-11 — Site S1 within-site CV vs published
+
+- **Observed:** GABAplus/tCr CV = 13.3% (n=12, Siemens site S1).
+- **Published:** mean within-site CV 9.5%; whole-dataset CV 12.0%.
+- **Status:** NOT yet a discrepancy. 9.5% is a mean across 24 sites; individual
+  site CVs vary around it, and a single site cannot be compared to that average.
+  Revisit once several sites are processed.
+- **Note:** CV is scale-invariant, so this comparison is valid even though the
+  absolute GABAplus/tCr scale is not yet reconciled with Gannet's GABA+/Cr (D-08).
+
+### D-12 — Vendor difference is far larger in Osprey than in Gannet (PRELIMINARY)
+
+**Status: SIGNAL, NOT RESULT. One site per vendor. Do not cite this yet.**
+
+- **Observed:**
+
+  | site | vendor | n | GABAplus/tCr | SD | CV | GABA collapsed to ~0 |
+  |---|---|---|---|---|---|---|
+  | G1 | GE      |  7 | 0.3983 | 0.0648 | 16.3% | 0/7 |
+  | S1 | Siemens | 12 | 0.2789 | 0.0371 | 13.3% | 7/12 |
+
+- **Key comparison (scale-invariant, so unaffected by D-08):**
+  - Observed GE/Siemens ratio  = **1.428** (Siemens 30% below GE)
+  - Published GE/Siemens ratio = **1.060** (Siemens 5.7% below GE)
+  - Excess Siemens-lowness in Osprey ≈ **26%**
+
+- **Relation to the pre-specified prediction:** Craven et al. (2022) report Osprey
+  giving ~28% lower estimates on Siemens data. That figure was recorded in
+  `docs/target-values.md` BEFORE any data was processed. The observed ~26% is
+  close to it.
+
+- **Why this cannot yet be claimed:**
+  1. n=7 and n=12, one site per vendor. In the published decomposition, site
+     accounts for 20% of variance vs 8% for vendor — a single site is a poor
+     estimate of its vendor and site effects alone could produce this.
+  2. The GABA/MM degeneracy (D-09) differs sharply by vendor: 0/7 collapsed in
+     GE vs 7/12 in Siemens. That difference in fit behaviour may be driving the
+     means rather than any vendor effect on GABA+ itself.
+  3. Both within-site CVs (16.3%, 13.3%) exceed the published 9.5%, suggesting
+     this pipeline is noisier than the original irrespective of vendor.
+
+- **What would settle it:** 2-3 GE sites and 3-4 Siemens sites, to separate the
+  vendor effect from site-level variance. This is the next experiment.
+
+- **Bearing on the headline claim:** potentially central. If it survives more
+  sites, it is an independent confirmation of an algorithm effect via a
+  different route, against a prediction registered in advance.

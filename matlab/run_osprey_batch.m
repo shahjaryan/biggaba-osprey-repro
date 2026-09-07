@@ -27,7 +27,7 @@ logFile   = fullfile(outRoot, 'batch_log.txt');
 % would compare a different sample against the published numbers.
 % Set ONLY_SITES to restrict the run, e.g. {'S1'} for a single-site test.
 % Leave empty to process everything in scope.
-ONLY_SITES = {'S1'};
+ONLY_SITES = {'G1','P1'};
 
 sites = [ arrayfun(@(i) sprintf('G%d', i), 1:8, 'UniformOutput', false), ...
           arrayfun(@(i) sprintf('P%d', i), 1:9, 'UniformOutput', false), ...
@@ -40,7 +40,7 @@ end
 
 % File extension by vendor prefix. VERIFY against the unzipped archives before
 % trusting this - the internal layout has not been confirmed.
-extByVendor = containers.Map( {'G','P','S'}, {'.7', '.sdat', '.dat'} );
+extByVendor = containers.Map( {'G','P','S'}, {'.7', '.SDAT', '.dat'} );
 
 %% ------------------------------------------------------------------
 %  Setup
@@ -114,28 +114,58 @@ for s = 1:numel(sites)
     end
 
     ext   = extByVendor(vendor);
-    found = dir(fullfile(siteDir, '**', ['*' ext]));
+    found = dir(fullfile(siteDir, '**', ['*' ext]));   % '**' handles the extra
+                                                       % nesting in G*/P* archives
 
-    % CRITICAL: each subject has TE 68 (GABA+) AND TE 80 (MM-suppressed).
-    % They are different measures with different published values. Taking both
-    % would double the apparent n and silently average two quantities together.
+    % Vendor file conventions, verified against the unpacked archives:
+    %   Siemens  S01_GABA_68.dat        + S01_GABA_68_H2O.dat
+    %   GE       S01_GABA_68.7          (water reference embedded in the P-file)
+    %   Philips  S01_GABA_68_act.SDAT   + S01_GABA_68_ref.SDAT  (+ .SPAR headers)
+    %
+    % TE 68 = GABA+, TE 80 = MM-suppressed. Only TE 68 is in scope.
     names = {found.name};
-    isRef = contains(lower(names), {'h2o', 'ref', 'water', '_w.'});
+    isRef = contains(lower(names), {'h2o', '_ref.', 'water', '_w.'});
     isTE  = contains(names, '_68.') | contains(names, '_68_');
 
-    metab = found(~isRef & isTE);
-    refs  = found(isRef & isTE);
+    metabFiles = found(~isRef & isTE);
+    refFiles   = found( isRef & isTE);
 
-    if isempty(metab) && any(~isRef)
-        logmsg(['  WARNING: no file matched TE 68 at %s. Vendor naming may ' ...
-                'differ. NOT processing - verify naming first.'], site);
-        summary(end+1) = struct('site', site, 'nFound', 0, ...
-                                'status', 'te_unmatched', 'msg', ''); %#ok<SAGROW>
-        continue;
+    % Pair each metabolite file with its OWN reference by filename stem.
+    % Positional pairing would silently mis-associate a subject's water
+    % reference with another subject's spectrum - no error, plausible numbers,
+    % wrong results. Same failure class as mixing TE 68 and TE 80.
+    metab = metabFiles;
+    pairedRefs = cell(1, numel(metabFiles));
+    nUnpaired  = 0;
+
+    for m = 1:numel(metabFiles)
+        [~, stem, e] = fileparts(metabFiles(m).name);
+        if endsWith(lower(stem), '_act')          % Philips
+            wanted = [stem(1:end-4) '_ref' e];
+        else                                      % Siemens
+            wanted = [stem '_H2O' e];
+        end
+        idx = find(strcmpi({refFiles.name}, wanted), 1);
+        if isempty(idx)
+            pairedRefs{m} = '';
+            nUnpaired = nUnpaired + 1;
+        else
+            pairedRefs{m} = fullfile(refFiles(idx).folder, refFiles(idx).name);
+        end
     end
 
-    logmsg('  TE68: %d metabolite, %d reference (of %d total files)', ...
-           numel(metab), numel(refs), numel(found));
+    if vendor == 'G'
+        files_ref = {};                            % embedded in the P-file
+    elseif nUnpaired == 0 && ~isempty(metabFiles)
+        files_ref = pairedRefs;
+    else
+        logmsg(['  WARNING: %d of %d metabolite files have no matching water ' ...
+                'reference. Falling back to ratio-only quantification for this ' ...
+                'site rather than risk mis-pairing.'], nUnpaired, numel(metabFiles));
+        files_ref = {};
+    end
+
+    refs = refFiles;   % kept for the log line below
 
     if isempty(metab)
         logmsg('  SKIP: no metabolite files matched *%s', ext);
@@ -145,18 +175,6 @@ for s = 1:numel(sites)
     end
 
     files = fullfile({metab.folder}, {metab.name});
-
-    % GE P-files embed their water reference; the others need it supplied.
-    if vendor == 'G' || isempty(refs)
-        files_ref = {};
-    else
-        files_ref = fullfile({refs.folder}, {refs.name});
-        if numel(files_ref) ~= numel(files)
-            logmsg(['  WARNING: %d metabolite vs %d reference files. Osprey ' ...
-                    'requires equal-length arrays. Check pairing before trusting ' ...
-                    'this site.'], numel(files), numel(files_ref));
-        end
-    end
 
     % Clear per-site output so Osprey does not block on its overwrite prompt.
     % An interactive prompt inside a 24-site loop would hang the run overnight.
@@ -200,7 +218,13 @@ end
 %  Wrap up
 %  ------------------------------------------------------------------
 
-T = struct2table(summary);
+% 'AsArray' is required when the struct is scalar (a single site) - without it
+% struct2table errors because the char fields have differing row counts.
+if numel(summary) == 1
+    T = struct2table(summary, 'AsArray', true);
+else
+    T = struct2table(summary);
+end
 writetable(T, fullfile(outRoot, 'batch_summary.csv'));
 
 logmsg('==== batch finished %s ====', datestr(now));
