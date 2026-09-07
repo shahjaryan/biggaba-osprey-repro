@@ -6,3 +6,6 @@
 --- G1 ---
   OK: 7 dataset(s) in 14.7 min
 --- P1 ---
+  OK: 9 dataset(s) in 12.8 min
+==== batch finished 07-Sep-2026 14:59:48 ====
+ok=2  error=0  missing=0  no_data=0

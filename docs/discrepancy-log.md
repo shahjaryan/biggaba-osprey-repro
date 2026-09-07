@@ -288,3 +288,104 @@ parameter tuning. Every parameter change made after seeing results goes in
 - **Bearing on the headline claim:** potentially central. If it survives more
   sites, it is an independent confirmation of an algorithm effect via a
   different route, against a prediction registered in advance.
+
+### D-13 — The published sample is not available; 6 of 24 sites are missing
+
+**Confirmed by two independent sources.**
+
+- **Observed:** `demographics.csv` contains 228 subjects across 20 sites. The
+  NITRC MEGA-PRESS package lists exactly 20 releases. The two agree exactly.
+- **Published sample:** 272 subjects, 24 sites (G1-G8, P1-P9, S1-S7).
+
+  | vendor | available | published | diff |
+  |---|---|---|---|
+  | GE      |  67 |  91 | -24 |
+  | Philips | 101 | 104 |  -3 |
+  | Siemens |  60 |  77 | -17 |
+  | total   | 228 | 272 | -44 |
+
+- **Absent from the public release:** `G2, G3, P2, S2, S4, S7`
+- **Present but postdating the paper (out of scope):** `P10, S8`
+
+- **Achievable scope for this reproduction — 18 sites, 204 subjects:**
+  - GE      (6 sites): G1, G4, G5, G6, G7, G8 — 67 subjects
+  - Philips (8 sites): P1, P3, P4, P5, P6, P7, P8, P9 — 89 subjects
+  - Siemens (4 sites): S1, S3, S5, S6 — 48 subjects
+
+- **Consequences:**
+  1. The exact published sample **cannot be reconstructed**. Every comparison
+     must state that it is computed on a different, smaller sample.
+  2. Whole-dataset CV (12.0%) and the variance decomposition (72/20/8) were
+     computed on 272 subjects / 24 sites. Site-level variance in particular is
+     sensitive to which sites are included, so the decomposition comparison is
+     the weakest of the planned targets.
+  3. Siemens falls from 7 sites to 4, making it the least well-estimated vendor —
+     directly relevant to D-12, where the Siemens comparison carries the most
+     weight.
+  4. Siemens sex ratio is imbalanced in the available data (38F/22M) relative to
+     roughly 50/50 for GE and Philips.
+
+- **Attributable to:** data availability, not analysis.
+- **Bearing on the headline claim:** substantial, and a reportable finding in its
+  own right — a widely cited multi-site study whose underlying data is no longer
+  fully available in the form analysed. Any absolute comparison to the published
+  numbers now carries a sample-composition caveat that cannot be removed.
+
+- **Note:** several releases (S1, S3, S6, S8, G1, G4, G5) are distributed as
+  external URLs rather than NITRC-hosted zips, which is a link-rot risk. S1 and
+  G1 resolved successfully as of 2026-09-07.
+
+### D-14 — Three vendors: anomaly is Siemens-specific, matching the pre-registered prediction
+
+**Status: STRONG SIGNAL. Still one site per vendor. Not yet a result.**
+
+- **Observed (one site per vendor):**
+
+  | site | vendor | n | GABAplus/tCr | CV | GABA collapsed |
+  |---|---|---|---|---|---|
+  | G1 | GE      |  7 | 0.3983 | 16.3% | 0/7 |
+  | P1 | Philips |  9 | 0.3813 |  8.2% | 0/9 |
+  | S1 | Siemens | 12 | 0.2789 | 13.3% | 7/12 |
+
+- **Ordering:** observed GE > Philips > Siemens; published GE > Siemens > Philips.
+  **Does not match** — Siemens moves from middle to last.
+
+- **Pairwise ratios (scale-invariant, so unaffected by D-08):**
+
+  | pair | observed | published |
+  |---|---|---|
+  | GE / Philips     | 1.045 | 1.108 |
+  | GE / Siemens     | 1.428 | 1.060 |
+  | Siemens / Philips| 0.732 | 1.045 |
+
+- **The key structure:** GE and Philips reproduce the published relationship
+  closely (1.045 vs 1.108). This acts as a control: the pipeline is not
+  generically inflating vendor differences. The entire anomaly is Siemens.
+
+- **Magnitude, against the mean of the other two vendors:**
+  - observed  Siemens / mean(GE, Philips) = 0.716
+  - published Siemens / mean(GE, Philips) = 0.991
+  - **Siemens runs 27.8% low.**
+
+- **Pre-registered prediction:** Craven et al. (2022) report Osprey giving ~28%
+  lower estimates on Siemens data. Recorded in `docs/target-values.md` before any
+  processing. Observed 27.8%.
+
+- **Candidate mechanism:** the GABA/MM partition degeneracy (D-09) is ALSO
+  Siemens-specific — 7/12 collapsed in Siemens vs 0/7 GE and 0/9 Philips. These
+  are likely the same phenomenon. Establishing the link is the most valuable open
+  question in the project.
+
+- **Secondary observation:** Philips within-site CV of 8.2% is close to the
+  published mean within-site CV of 9.5% — a clean reproduction of a published
+  variability figure. GE (16.3%) and Siemens (13.3%) are both high.
+
+- **Caveats that still stand:**
+  1. One site per vendor (n=7/9/12). Could be site-level rather than vendor-level.
+  2. Per D-13, only 4 Siemens sites exist in the public release, so the Siemens
+     arm will remain the least well-estimated regardless.
+  3. Site accounts for 20% of variance vs 8% for vendor in the published
+     decomposition — a single site is a weak vendor estimate by construction.
+
+- **Next experiment:** all 18 available in-scope sites. That is what converts this
+  from signal to result, and it is roughly six hours of unattended compute.
