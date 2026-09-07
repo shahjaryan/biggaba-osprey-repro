@@ -1,0 +1,152 @@
+Osprey nDatasets indexing patch
+Applied: 2026-09-06T22:15:25
+Target : /sessions/rcw-01ejchw8agk2r7hxdeqgdgun/mnt/Documents/osprey
+Total  : 49 line(s) in 21 file(s)
+
+fit/code/osp_extract_minmax_fit.m:66
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+fit/code/osp_fitInitialise.m:521
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+fit/code/osp_fitInitialise.m:535
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+fit/code/osp_fitMultiVoxel.m:25
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+fit/code/osp_fitMultiVoxel.m:29
+  - for kk = 1 :MRSCont.nDatasets % Loop over scale values
+  + for kk = 1 :MRSCont.nDatasets(1) % Loop over scale values
+fit/code/osp_fitMultiVoxel.m:84
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+fit/code/osp_fitMultiVoxel.m:154
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+fit/code/osp_fitWater.m:127
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+libraries/FID-A/processingTools/osp_MRSIRecon.m:42
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+load/mrsi/load_mrsi_data.m:66
+  - for kk=2:MRSCont.nDatasets %re_mm
+  + for kk=2:MRSCont.nDatasets(1) %re_mm
+load/mrsi/load_mrsi_data.m:99
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+load/priam/osp_senseRecon.m:38
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+load/priam/osp_senseRecon.m:69
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+overview/OspreyOverview.m:125
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+overview/OspreyOverview.m:147
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+overview/OspreyOverview.m:451
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+overview/OspreyOverview.m:478
+  - for kk = 1 : MRSCont.nDatasets %loop over all datasets
+  + for kk = 1 : MRSCont.nDatasets(1) %loop over all datasets
+overview/OspreyOverview.m:533
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+overview/osp_import_LCModel_spectra.m:200
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+overview/osp_import_Tarquin_spectra.m:116
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+process/osp_processMultiVoxel.m:26
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+process/osp_processMultiVoxel.m:58
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+process/osp_processMultiVoxel.m:86
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+process/osp_processMultiVoxel.m:169
+  - for kk = 1 :MRSCont.nDatasets
+  + for kk = 1 :MRSCont.nDatasets(1)
+process/osp_remove_noise_scan.m:22
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+process/osp_saveJMRUI.m:47
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+process/osp_saveLCM.m:47
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+process/osp_saveNII.m:41
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+process/osp_saveVendor.m:63
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:156
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:188
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:333
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:750
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:768
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+quantify/OspreyQuantifyMRSI.m:790
+  - for kk = 1:MRSCont.nDatasets
+  + for kk = 1:MRSCont.nDatasets(1)
+utilities/OspreyAddImages.m:31
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyAddImages.m:73
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyGenerateSpectra.m:113
+  - for kk = 1 : MRSCont.nDatasets *NoGroups
+  + for kk = 1 : MRSCont.nDatasets(1) *NoGroups
+utilities/OspreyGenerateSpectra.m:170
+  - for kk = 1 : MRSCont.nDatasets * NoGroups
+  + for kk = 1 : MRSCont.nDatasets(1) * NoGroups
+utilities/OspreyGenerateSpectra.m:239
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyGenerateSpectra.m:404
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyGenerateSpectra.m:461
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:48
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:54
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:60
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:66
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:72
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/OspreyRebase.m:78
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)
+utilities/RunOspreyJob.m:59
+  - for kk = 1 : MRSCont.nDatasets
+  + for kk = 1 : MRSCont.nDatasets(1)

@@ -1,0 +1,24 @@
+# Data - never commit
+data/*
+!data/README.md
+
+# Results - large binaries and derived outputs
+results/*
+!results/.gitkeep
+*.mat
+*.pdf
+
+# Keep the small derived tables that the writeup cites
+!results/headline_comparison.csv
+!results/variance_decomposition.csv
+!results/within_site_cv.csv
+!results/batch_summary.csv
+!results/batch_log.txt
+
+# MATLAB / R cruft
+*.asv
+slprj/
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
