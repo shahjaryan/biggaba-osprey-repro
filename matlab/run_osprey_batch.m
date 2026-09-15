@@ -1,187 +1,184 @@
 % run_osprey_batch.m
 %
-% Process all in-scope Big GABA sites through Osprey, one site at a time.
+% Process Big GABA sites through Osprey, one site at a time.
 %
 % Run smoke_test.m first. Do not run this until a single dataset has produced a
 % plausible number and a fit you have actually looked at.
 %
-% Processes site by site rather than all 272 at once so that a failure on one
-% vendor does not lose the whole run, and so partial results survive a crash.
-%
-% UNTESTED.
+% Site-by-site rather than one large job so a failure on one vendor does not
+% lose the whole run, and so partial results survive a crash.
 
 clear; close all; clc;
 
-%% ------------------------------------------------------------------
-%  Configuration - EDIT
-%  ------------------------------------------------------------------
+%% ===================================================================
+%  RUN CONFIGURATION  - the only block you normally edit
+%  ===================================================================
+%
+% RUN_LABEL separates output from different analysis configurations:
+%   ''             -> results/<site>                 (primary run)
+%   'gannet_range' -> results/gannet_range/<site>    (fit-range sensitivity)
+%
+% FIT_RANGE is the variable under test in the D-07 sensitivity analysis:
+%   []            -> Osprey's default [0.2 4.2] (OspreySettings.m:42)
+%   [2.79 4.10]   -> Gannet's difference-spectrum range (Mikkelsen 2017)
+%
+% Everything else is held fixed so the comparison isolates the fit range.
+
+RUN_LABEL = '';        % '' or 'gannet_range'
+FIT_RANGE = [];        % [] or [2.79 4.10]
+
+ONLY_SITES    = {};    % e.g. {'S1'} to restrict; {} = all in-scope sites
+SKIP_EXISTING = true;  % resume: skip sites that already have an MRSCont .mat
+
+%% ===================================================================
+%  Paths
+%  ===================================================================
 
 ospreyDir = fullfile(getenv('USERPROFILE'), 'Documents', 'osprey');
+spmDir    = fullfile(getenv('USERPROFILE'), 'Documents', 'spm12');
 repoDir   = fileparts(fileparts(mfilename('fullpath')));
 dataRoot  = fullfile(repoDir, 'data');
-outRoot   = fullfile(repoDir, 'results');
+
+outRoot = fullfile(repoDir, 'results');
 if ~isempty(RUN_LABEL)
     outRoot = fullfile(outRoot, RUN_LABEL);
 end
-logFile   = fullfile(outRoot, 'batch_log.txt');
+if ~isfolder(outRoot); mkdir(outRoot); end
+logFile = fullfile(outRoot, 'batch_log.txt');
 
-% IN-SCOPE SITES ONLY.
-% NITRC hosts P10 and S8; Mikkelsen 2017 did not analyse them. Including them
-% would compare a different sample against the published numbers.
-% SITES IN SCOPE (see docs/discrepancy-log.md D-13).
+%% ===================================================================
+%  Sites in scope   (see docs/discrepancy-log.md, D-13 and D-18)
+%  ===================================================================
 %
 % Mikkelsen 2017 analysed 24 sites (G1-G8, P1-P9, S1-S7, n=272). The public
-% MEGA-PRESS release contains only 20 sites, and 6 of the published sites are
-% absent entirely: G2, G3, P2, S2, S4, S7. Two sites postdate the paper and are
-% out of scope: P10, S8.
+% MEGA-PRESS release contains only 20; six published sites are absent entirely
+% (G2, G3, P2, S2, S4, S7) and two postdate the paper (P10, S8 - out of scope).
 %
-% What remains: 18 sites, 204 subjects. The exact published sample cannot be
-% reconstructed; every comparison must state this.
-sites = { 'G1','G4','G5','G6','G7','G8', ...                     % GE      (6)
-          'P1','P3','P4','P5','P6','P7','P8','P9', ...           % Philips (8)
-          'S1','S5','S6' };                                      % Siemens (3)
-% S3 EXCLUDED - unreadable by Osprey as distributed. See D-18.
-% Siemens VD software, multi-RAID TWIX container; Osprey's bundled mapVBVD
-% fails in read_twix_hdr.m:15 before any processing. Not a data-quality
-% exclusion - the data may be fine, but this toolchain cannot read it.
+% S3 is additionally EXCLUDED (D-18): Siemens VD software with a multi-RAID
+% TWIX container, which Osprey's bundled mapVBVD cannot read - it fails in
+% read_twix_hdr.m:15 before any processing. Not a data-quality exclusion; the
+% data may be fine, but this toolchain cannot read it.
+%
+% What remains: 17 sites, 192 subjects. The published sample cannot be
+% reconstructed, and every comparison must state this.
 
-% Restrict the run, e.g. {'S1'} for a single site. Empty = all of the above.
-ONLY_SITES = {};
-
-% ---------------------------------------------------------------------------
-% RUN CONFIGURATION
-%
-% RUN_LABEL separates output from different analysis configurations:
-%   ''              -> results/<site>                  (primary run, default range)
-%   'gannet_range'  -> results/gannet_range/<site>     (fit-range sensitivity)
-%
-% FIT_RANGE is the one variable under test (D-07):
-%   []            -> use Osprey's default, [0.2 4.2] (OspreySettings.m:42)
-%   [2.79 4.10]   -> Gannet's difference-spectrum fit range (Mikkelsen 2017)
-%
-% Everything else is held fixed so the comparison isolates the fit range.
-% ---------------------------------------------------------------------------
-RUN_LABEL = '';
-FIT_RANGE = [];
-
-% Skip sites that already have results. Makes a long unattended run resumable:
-% if it dies at site 14, restarting picks up where it stopped rather than
-% redoing 13 sites of compute.
-SKIP_EXISTING = true;
+sites = { 'G1','G4','G5','G6','G7','G8', ...              % GE      (6)
+          'P1','P3','P4','P5','P6','P7','P8','P9', ...    % Philips (8)
+          'S1','S5','S6' };                               % Siemens (3)
 
 if ~isempty(ONLY_SITES)
     sites = sites(ismember(sites, ONLY_SITES));
-    fprintf('RESTRICTED RUN: %s\n', strjoin(sites, ', '));
 end
 
-% File extension by vendor prefix. VERIFY against the unzipped archives before
-% trusting this - the internal layout has not been confirmed.
+% Metabolite file extension by vendor prefix, verified against the archives.
 extByVendor = containers.Map( {'G','P','S'}, {'.7', '.SDAT', '.dat'} );
 
-%% ------------------------------------------------------------------
+%% ===================================================================
 %  Setup
-%  ------------------------------------------------------------------
+%  ===================================================================
 
 addpath(genpath(ospreyDir));
-addpath(fileparts(mfilename('fullpath')));   % for writeOspreyJobFile
+addpath(fileparts(mfilename('fullpath')));      % writeOspreyJobFile
 
-spmDir = fullfile(getenv('USERPROFILE'), 'Documents', 'spm12');
+% SPM12 is not used by this pipeline (no coregistration, no segmentation) but
+% osp_Toolbox_Check lists it under neededGlobal for OspreyProcess/OspreyFit,
+% reached via osp_CheckRunPreviousModule. Top level only - never genpath.
 if isfolder(spmDir) && isempty(which('spm.m')); addpath(spmDir); end
 
 diary off; fclose('all');
 
-if ~isfolder(outRoot); mkdir(outRoot); end
-
 fid = fopen(logFile, 'a');
 logmsg = @(varargin) logBoth(fid, varargin{:});
+
 logmsg('==== batch started %s ====', datestr(now));
 if isempty(RUN_LABEL)
-    logmsg('     config: PRIMARY  fit.range = Osprey default [0.2 4.2]');
+    logmsg('     config: PRIMARY   fit.range = Osprey default [0.2 4.2]');
 else
-    logmsg('     config: %s  fit.range = [%.2f %.2f]', RUN_LABEL, FIT_RANGE(1), FIT_RANGE(2));
+    logmsg('     config: %s   fit.range = [%.2f %.2f]', RUN_LABEL, FIT_RANGE(1), FIT_RANGE(2));
 end
+logmsg('     sites : %s', strjoin(sites, ', '));
 logmsg('     output: %s', outRoot);
 
-%% ------------------------------------------------------------------
-%  Shared options - identical for every site.
-%  ------------------------------------------------------------------
+%% ===================================================================
+%  Processing options - identical for every site
+%  ===================================================================
 %
 % Holding these fixed across vendors is the entire design. If a vendor needs a
-% different setting to run at all, that is a finding: log it in
-% docs/discrepancy-log.md rather than silently special-casing it here.
+% different setting to run at all, that is a finding for the discrepancy log,
+% not something to special-case silently here.
 
 opts = struct();
 opts.SpecReg               = 'RobSpecReg';
 opts.SubSpecAlignment.mets = 'L2Norm';
 opts.fit.method            = 'Osprey';
-opts.fit.style             = 'Separate';   % Osprey forces this for MEGA
+opts.fit.style             = 'Separate';   % Osprey forces this for MEGA (D-01)
 opts.fit.includeMetabs     = {'default'};
 opts.fit.coMM3             = '3to2MM';
-opts.fit.FWHMcoMM3         = 14;
+opts.fit.FWHMcoMM3         = 14;           % required companion to coMM3 (D-02)
 if ~isempty(FIT_RANGE)
     opts.fit.range = FIT_RANGE;
-end          % required companion field to coMM3
-opts.saveLCM               = 0;
-opts.savejMRUI             = 0;
-opts.saveVendor            = 0;
-opts.saveNII               = 0;   % not needed; also avoids osp_saveNII
-opts.savePDF               = 0;   % see smoke_test.m - QC via qc_plot.m
+end
+opts.saveLCM    = 0;
+opts.savejMRUI  = 0;
+opts.saveVendor = 0;
+opts.saveNII    = 0;
+opts.savePDF    = 0;   % routes through uix.Panel (GUI Layout Toolbox); QC via qc_plot.m
 
-%% ------------------------------------------------------------------
+%% ===================================================================
 %  Main loop
-%  ------------------------------------------------------------------
+%  ===================================================================
 
 summary = struct('site', {}, 'nFound', {}, 'status', {}, 'msg', {});
 
 for s = 1:numel(sites)
 
-    site    = sites{s};
-    vendor  = site(1);
-    outDir  = fullfile(outRoot, site);
-
-    % NITRC archives unpack as <SITE>_MP (MEGA-PRESS) or <SITE>_P (PRESS).
-    % Accept either the bare site name or the _MP suffix; never _P, which is
-    % short-TE data and out of scope.
-    candidates = {fullfile(dataRoot, [site '_MP']), fullfile(dataRoot, site)};
-    siteDir = '';
-    for c = 1:numel(candidates)
-        if isfolder(candidates{c}); siteDir = candidates{c}; break; end
-    end
-    if isempty(siteDir); siteDir = candidates{1}; end
+    site   = sites{s};
+    vendor = site(1);
+    outDir = fullfile(outRoot, site);
 
     logmsg('--- %s ---', site);
 
+    % Resume support.
     doneMarker = fullfile(outDir, sprintf('MRSCont_%s.mat', site));
     if SKIP_EXISTING && isfile(doneMarker)
-        logmsg('  SKIP: already processed (%s exists)', doneMarker);
+        logmsg('  SKIP: already processed');
         summary(end+1) = struct('site', site, 'nFound', 0, ...
                                 'status', 'skipped', 'msg', 'existing results'); %#ok<SAGROW>
         continue;
     end
 
-    if ~isfolder(siteDir)
-        logmsg('  SKIP: directory not found (%s)', siteDir);
+    % NITRC archives unpack either as <SITE>_MP/<subject>/ or with an extra
+    % nesting level, <SITE>_MP/<SITE>_MP/<subject>/. Recursive globbing below
+    % handles both; here we just locate the site root.
+    candidates = {fullfile(dataRoot, [site '_MP']), fullfile(dataRoot, site)};
+    siteDir = '';
+    for c = 1:numel(candidates)
+        if isfolder(candidates{c}); siteDir = candidates{c}; break; end
+    end
+    if isempty(siteDir)
+        logmsg('  SKIP: directory not found (%s)', candidates{1});
         summary(end+1) = struct('site', site, 'nFound', 0, ...
-                                'status', 'missing', 'msg', siteDir); %#ok<SAGROW>
+                                'status', 'missing', 'msg', candidates{1}); %#ok<SAGROW>
         continue;
     end
 
     ext   = extByVendor(vendor);
-    found = dir(fullfile(siteDir, '**', ['*' ext]));   % '**' handles the extra
-                                                       % nesting in G*/P* archives
+    found = dir(fullfile(siteDir, '**', ['*' ext]));
+    if isempty(found)
+        logmsg('  SKIP: no files matching *%s', ext);
+        summary(end+1) = struct('site', site, 'nFound', 0, ...
+                                'status', 'no_data', 'msg', ext); %#ok<SAGROW>
+        continue;
+    end
 
-    % Vendor file conventions, verified against the unpacked archives:
-    %   Siemens  S01_GABA_68.dat        + S01_GABA_68_H2O.dat
-    %   GE       S01_GABA_68.7          (water reference embedded in the P-file)
-    %   Philips  S01_GABA_68_act.SDAT   + S01_GABA_68_ref.SDAT  (+ .SPAR headers)
-    %
+    % ---- File selection -------------------------------------------------
     % The _68 / _80 suffixes denote ACQUISITION TYPE, not literal echo time:
     %   _68 = GABA+ (co-edited MM present)   <- in scope
     %   _80 = MM-suppressed GABA             <- out of scope
-    % Mikkelsen 2017 gives MM-suppressed TE as 80 ms for GE/Philips but 68 ms for
-    % Siemens, and Important_Notes.pdf confirms TE 68 for the _80 files at S6.
-    % The filename is a label, not a measurement. This filter selects the GABA+
-    % acquisition, which is what matters.
+    % Mikkelsen 2017 gives MM-suppressed TE as 80 ms for GE/Philips but 68 ms
+    % for Siemens, and Important_Notes.pdf confirms TE 68 for the _80 files at
+    % S6. Mixing the two would double the apparent n and average two different
+    % measurements into one plausible-looking mean (D-03).
     names = {found.name};
     isRef = contains(lower(names), {'h2o', '_ref.', 'water', '_w.'});
     isTE  = contains(names, '_68.') | contains(names, '_68_');
@@ -196,14 +193,21 @@ for s = 1:numel(sites)
         refFiles = found(isRef & isTE);
     end
 
-    % Pair each metabolite file with its OWN reference by filename stem.
-    % Positional pairing would silently mis-associate a subject's water
-    % reference with another subject's spectrum - no error, plausible numbers,
-    % wrong results. Same failure class as mixing TE 68 and TE 80.
     logmsg('  TE68: %d metabolite, %d reference (of %d files matching *%s)', ...
            numel(metabFiles), numel(refFiles), numel(found), ext);
 
-    metab = metabFiles;
+    if isempty(metabFiles)
+        logmsg('  SKIP: no metabolite files matched TE 68');
+        summary(end+1) = struct('site', site, 'nFound', 0, ...
+                                'status', 'te_unmatched', 'msg', ''); %#ok<SAGROW>
+        continue;
+    end
+
+    % ---- Reference pairing ----------------------------------------------
+    % Pair each metabolite file with its OWN reference by filename stem.
+    % Positional pairing would silently mis-associate one subject's water
+    % reference with another's spectrum - no error, plausible numbers, wrong
+    % results. Same failure class as mixing TE 68 and TE 80.
     pairedRefs = cell(1, numel(metabFiles));
     nUnpaired  = 0;
 
@@ -214,23 +218,20 @@ for s = 1:numel(sites)
         else                                      % Siemens
             wanted = [stem '_H2O' e];
         end
-        % ---- Site-specific exception: S6 --------------------------------
-        % Important_Notes.pdf (Big GABA, NITRC): at S6 water suppression was
-        % mistakenly left on while acquiring the GABA+ water references, so
-        % *GABA_68_H2O is unusable for subjects S01-S06. The data providers
-        % recommend substituting the MM-suppressed water reference
-        % (*GABA_80_H2O), the TEs being equivalent (68 ms).
-        %
-        % We follow the providers' documented recommendation. See D-15.
+
+        % Site-specific exception: S6 (D-15).
+        % Important_Notes.pdf: at S6 water suppression was mistakenly left on
+        % while acquiring the GABA+ water references, so *GABA_68_H2O is
+        % unusable for subjects S01-S06. The data providers recommend
+        % substituting the MM-suppressed reference (*GABA_80_H2O), the echo
+        % times being equivalent (68 ms). We follow that recommendation.
         if strcmpi(site, 'S6')
             subj = extractBefore(metabFiles(m).name, '_');
             if ismember(upper(subj), {'S01','S02','S03','S04','S05','S06'})
                 wanted = strrep(wanted, '_68_H2O', '_80_H2O');
-                logmsg('    %s: using %s (documented S6 acquisition error)', ...
-                       subj, wanted);
+                logmsg('    %s: using %s (documented S6 acquisition error)', subj, wanted);
             end
         end
-        % -----------------------------------------------------------------
 
         idx = find(strcmpi({refFiles.name}, wanted), 1);
         if isempty(idx)
@@ -242,33 +243,25 @@ for s = 1:numel(sites)
     end
 
     if vendor == 'G'
-        files_ref = {};                            % embedded in the P-file
-    elseif nUnpaired == 0 && ~isempty(metabFiles)
+        files_ref = {};                    % GE P-files embed their own reference
+    elseif nUnpaired == 0
         files_ref = pairedRefs;
     else
         logmsg(['  WARNING: %d of %d metabolite files have no matching water ' ...
-                'reference. Falling back to ratio-only quantification for this ' ...
-                'site rather than risk mis-pairing.'], nUnpaired, numel(metabFiles));
+                'reference. Falling back to ratio-only rather than risk ' ...
+                'mis-pairing.'], nUnpaired, numel(metabFiles));
         files_ref = {};
     end
 
-    refs = refFiles;   % kept for the log line below
+    files = fullfile({metabFiles.folder}, {metabFiles.name});
 
-    if isempty(metab)
-        logmsg('  SKIP: no metabolite files matched *%s', ext);
-        summary(end+1) = struct('site', site, 'nFound', 0, ...
-                                'status', 'no_data', 'msg', ext); %#ok<SAGROW>
-        continue;
-    end
-
-    files = fullfile({metab.folder}, {metab.name});
-
-    % Clear per-site output so Osprey does not block on its overwrite prompt.
-    % An interactive prompt inside a 24-site loop would hang the run overnight.
+    % ---- Output directory -----------------------------------------------
+    % Cleared each run so Osprey does not block on its interactive overwrite
+    % prompt, which would hang an unattended batch indefinitely.
     if isfolder(outDir)
-        [ok,~] = rmdir(outDir, 's');
+        [ok, ~] = rmdir(outDir, 's');
         if ~ok
-            outDir = [outDir '_' datestr(now,'yyyymmdd_HHMMSS')];
+            outDir = [outDir '_' datestr(now, 'yyyymmdd_HHMMSS')];
             logmsg('  could not clear output dir; using %s', outDir);
         end
     end
@@ -295,10 +288,9 @@ for s = 1:numel(sites)
         summary(end+1) = struct('site', site, 'nFound', numel(files), ...
                                 'status', 'ok', 'msg', ''); %#ok<SAGROW>
     catch ME
-        % Never abort the batch on one site. Record and move on.
-        % Log the FULL stack: the message alone is rarely enough to diagnose a
-        % failure after an unattended run, and re-running a site to recover the
-        % trace costs 20-30 minutes.
+        % Never abort the batch on one site. Log the FULL stack - the message
+        % alone is rarely enough to diagnose a failure after an unattended run,
+        % and re-running a site to recover the trace costs 20-30 minutes.
         logmsg('  FAIL: %s', ME.message);
         logmsg('        identifier: %s', ME.identifier);
         for st = 1:numel(ME.stack)
@@ -309,12 +301,12 @@ for s = 1:numel(sites)
     end
 end
 
-%% ------------------------------------------------------------------
+%% ===================================================================
 %  Wrap up
-%  ------------------------------------------------------------------
+%  ===================================================================
 
-% 'AsArray' is required when the struct is scalar (a single site) - without it
-% struct2table errors because the char fields have differing row counts.
+% 'AsArray' is required when the struct is scalar (a single-site run) -
+% without it struct2table errors because the char fields differ in row count.
 if numel(summary) == 1
     T = struct2table(summary, 'AsArray', true);
 else
@@ -323,15 +315,15 @@ end
 writetable(T, fullfile(outRoot, 'batch_summary.csv'));
 
 logmsg('==== batch finished %s ====', datestr(now));
-logmsg('ok=%d  error=%d  missing=%d  no_data=%d', ...
+logmsg('ok=%d  error=%d  missing=%d  skipped=%d', ...
        sum(strcmp(T.status,'ok')),      sum(strcmp(T.status,'error')), ...
-       sum(strcmp(T.status,'missing')), sum(strcmp(T.status,'no_data')));
+       sum(strcmp(T.status,'missing')), sum(strcmp(T.status,'skipped')));
 fclose(fid);
 
 disp(T);
 fprintf('\nEvery site that did not return ok needs an entry in docs/discrepancy-log.md.\n');
 
-% -------------------------------------------------------------------------
+%% -------------------------------------------------------------------
 
 function logBoth(fid, fmt, varargin)
     msg = sprintf(fmt, varargin{:});
