@@ -1,3 +1,19 @@
 site,nFound,status,msg
-G1,7,ok,
-P1,9,ok,
+G1,0,skipped,existing results
+G4,12,ok,
+G5,12,ok,
+G6,12,ok,
+G7,12,ok,
+G8,12,ok,
+P1,0,skipped,existing results
+P3,12,ok,
+P4,12,ok,
+P5,8,ok,
+P6,12,ok,
+P7,12,ok,
+P8,12,ok,
+P9,12,ok,
+S1,0,skipped,existing results
+S3,12,error,Index exceeds array bounds.
+S5,12,ok,
+S6,12,ok,

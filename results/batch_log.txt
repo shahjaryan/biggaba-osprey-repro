@@ -9,3 +9,63 @@
   OK: 9 dataset(s) in 12.8 min
 ==== batch finished 07-Sep-2026 14:59:48 ====
 ok=2  error=0  missing=0  no_data=0
+==== batch started 14-Sep-2026 11:42:40 ====
+--- G1 ---
+  SKIP: already processed (D:\biggaba-osprey-repro\results\G1\MRSCont_G1.mat exists)
+--- G4 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 22.6 min
+--- G5 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 16.7 min
+--- G6 ---
+  TE68: 12 metabolite, 0 reference (of 12 files matching *.7)
+  OK: 12 dataset(s) in 15.6 min
+--- G7 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 17.2 min
+--- G8 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 17.7 min
+--- P1 ---
+  SKIP: already processed (D:\biggaba-osprey-repro\results\P1\MRSCont_P1.mat exists)
+--- P3 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 18.9 min
+--- P4 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 19.2 min
+--- P5 ---
+  TE68: 8 metabolite, 8 reference (of 32 files matching *.SDAT)
+  OK: 8 dataset(s) in 14.3 min
+--- P6 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 22.1 min
+--- P7 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 27.8 min
+--- P8 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 25.4 min
+--- P9 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 33.7 min
+--- S1 ---
+  SKIP: already processed (D:\biggaba-osprey-repro\results\S1\MRSCont_S1.mat exists)
+--- S3 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  FAIL: Index exceeds array bounds.
+--- S5 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  OK: 12 dataset(s) in 32.8 min
+--- S6 ---
+  TE68: 12 metabolite, 24 reference (of 48 files matching *.dat)
+    S01: using S01_GABA_80_H2O.dat (documented S6 acquisition error)
+    S02: using S02_GABA_80_H2O.dat (documented S6 acquisition error)
+    S03: using S03_GABA_80_H2O.dat (documented S6 acquisition error)
+    S04: using S04_GABA_80_H2O.dat (documented S6 acquisition error)
+    S05: using S05_GABA_80_H2O.dat (documented S6 acquisition error)
+    S06: using S06_GABA_80_H2O.dat (documented S6 acquisition error)
+  OK: 12 dataset(s) in 30.5 min
+==== batch finished 14-Sep-2026 16:57:23 ====
+ok=14  error=1  missing=0  no_data=0

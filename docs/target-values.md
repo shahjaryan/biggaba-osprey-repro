@@ -79,23 +79,41 @@ known unreproducible judgment call — see `analysis-decisions.md`.
 
 ---
 
-## Sample verification (from demographics.csv, before any processing)
+## Sample — PUBLISHED vs ACHIEVABLE
 
-Confirm these hold before running Osprey. A mismatch here invalidates everything
-downstream and is cheap to catch now.
+See D-13. The public MEGA-PRESS release does not contain the published sample.
+Six sites analysed in Mikkelsen 2017 are absent entirely (G2, G3, P2, S2, S4, S7)
+and two present sites postdate it (P10, S8).
 
-| Check | Expected | Observed |
+| | published (2017) | achievable |
 |---|---|---|
-| Total participants | 272 | |
-| Sites | 24 | |
-| GE | 91 | |
-| Philips | 104 | |
-| Siemens | 77 | |
-| P10 or S8 present? | No | |
-| Age balanced across vendors? | — | |
-| Sex balanced across vendors? | — | |
+| sites | 24 | **17** (18 available, S3 unreadable - D-18) |
+| subjects | 272 | **192** |
+| GE | 91 (G1-G8) | 67 (G1, G4, G5, G6, G7, G8) |
+| Philips | 104 (P1-P9) | 89 (P1, P3, P4, P5, P6, P7, P8, P9) |
+| Siemens | 77 (S1-S7) | 36 (S1, S5, S6 - S3 excluded, D-18) |
 
----
+**Every comparison below is computed on a different, smaller sample than the
+published figures. This caveat cannot be removed and must appear in the writeup.**
+
+It bites hardest on the variance decomposition: site accounts for 20% of total
+variance in the published analysis, so a 24-site and an 18-site decomposition are
+not the same quantity. Treat that target as the weakest of the three.
+
+It also bites on Siemens specifically — 4 sites out of 7, the vendor arm carrying
+the D-14 finding.
+
+### Pre-processing checks (run 00_verify_sample.R)
+
+| check | expected | observed |
+|---|---|---|
+| subjects in demographics.csv | 228 (all 20 released sites) | 228 |
+| subjects in scope | 192 | 192 |
+| sites in scope | 17 | 17 |
+| GE / Philips / Siemens | 67 / 89 / 36 | 67 / 89 / 36 |
+| P10 or S8 present in results? | No | |
+| age balanced across vendors? | — | |
+| sex balanced across vendors? | — | Siemens 38F/22M vs ~50:50 others (D-13) |
 
 ## Phase 2 targets — Big GABA II (water-referenced)
 

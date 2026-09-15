@@ -25,13 +25,30 @@ logFile   = fullfile(outRoot, 'batch_log.txt');
 % IN-SCOPE SITES ONLY.
 % NITRC hosts P10 and S8; Mikkelsen 2017 did not analyse them. Including them
 % would compare a different sample against the published numbers.
-% Set ONLY_SITES to restrict the run, e.g. {'S1'} for a single-site test.
-% Leave empty to process everything in scope.
-ONLY_SITES = {'G1','P1'};
+% SITES IN SCOPE (see docs/discrepancy-log.md D-13).
+%
+% Mikkelsen 2017 analysed 24 sites (G1-G8, P1-P9, S1-S7, n=272). The public
+% MEGA-PRESS release contains only 20 sites, and 6 of the published sites are
+% absent entirely: G2, G3, P2, S2, S4, S7. Two sites postdate the paper and are
+% out of scope: P10, S8.
+%
+% What remains: 18 sites, 204 subjects. The exact published sample cannot be
+% reconstructed; every comparison must state this.
+sites = { 'G1','G4','G5','G6','G7','G8', ...                     % GE      (6)
+          'P1','P3','P4','P5','P6','P7','P8','P9', ...           % Philips (8)
+          'S1','S5','S6' };                                      % Siemens (3)
+% S3 EXCLUDED - unreadable by Osprey as distributed. See D-18.
+% Siemens VD software, multi-RAID TWIX container; Osprey's bundled mapVBVD
+% fails in read_twix_hdr.m:15 before any processing. Not a data-quality
+% exclusion - the data may be fine, but this toolchain cannot read it.
 
-sites = [ arrayfun(@(i) sprintf('G%d', i), 1:8, 'UniformOutput', false), ...
-          arrayfun(@(i) sprintf('P%d', i), 1:9, 'UniformOutput', false), ...
-          arrayfun(@(i) sprintf('S%d', i), 1:7, 'UniformOutput', false) ];
+% Restrict the run, e.g. {'S1'} for a single site. Empty = all of the above.
+ONLY_SITES = {};
+
+% Skip sites that already have results. Makes a long unattended run resumable:
+% if it dies at site 14, restarting picks up where it stopped rather than
+% redoing 13 sites of compute.
+SKIP_EXISTING = true;
 
 if ~isempty(ONLY_SITES)
     sites = sites(ismember(sites, ONLY_SITES));
@@ -106,6 +123,14 @@ for s = 1:numel(sites)
 
     logmsg('--- %s ---', site);
 
+    doneMarker = fullfile(outDir, sprintf('MRSCont_%s.mat', site));
+    if SKIP_EXISTING && isfile(doneMarker)
+        logmsg('  SKIP: already processed (%s exists)', doneMarker);
+        summary(end+1) = struct('site', site, 'nFound', 0, ...
+                                'status', 'skipped', 'msg', 'existing results'); %#ok<SAGROW>
+        continue;
+    end
+
     if ~isfolder(siteDir)
         logmsg('  SKIP: directory not found (%s)', siteDir);
         summary(end+1) = struct('site', site, 'nFound', 0, ...
@@ -122,18 +147,34 @@ for s = 1:numel(sites)
     %   GE       S01_GABA_68.7          (water reference embedded in the P-file)
     %   Philips  S01_GABA_68_act.SDAT   + S01_GABA_68_ref.SDAT  (+ .SPAR headers)
     %
-    % TE 68 = GABA+, TE 80 = MM-suppressed. Only TE 68 is in scope.
+    % The _68 / _80 suffixes denote ACQUISITION TYPE, not literal echo time:
+    %   _68 = GABA+ (co-edited MM present)   <- in scope
+    %   _80 = MM-suppressed GABA             <- out of scope
+    % Mikkelsen 2017 gives MM-suppressed TE as 80 ms for GE/Philips but 68 ms for
+    % Siemens, and Important_Notes.pdf confirms TE 68 for the _80 files at S6.
+    % The filename is a label, not a measurement. This filter selects the GABA+
+    % acquisition, which is what matters.
     names = {found.name};
     isRef = contains(lower(names), {'h2o', '_ref.', 'water', '_w.'});
     isTE  = contains(names, '_68.') | contains(names, '_68_');
 
     metabFiles = found(~isRef & isTE);
-    refFiles   = found( isRef & isTE);
+
+    % Reference candidates are normally TE68 only. S6 is an exception: its
+    % documented substitutes are the _80_H2O files, so keep all references there.
+    if strcmpi(site, 'S6')
+        refFiles = found(isRef);
+    else
+        refFiles = found(isRef & isTE);
+    end
 
     % Pair each metabolite file with its OWN reference by filename stem.
     % Positional pairing would silently mis-associate a subject's water
     % reference with another subject's spectrum - no error, plausible numbers,
     % wrong results. Same failure class as mixing TE 68 and TE 80.
+    logmsg('  TE68: %d metabolite, %d reference (of %d files matching *%s)', ...
+           numel(metabFiles), numel(refFiles), numel(found), ext);
+
     metab = metabFiles;
     pairedRefs = cell(1, numel(metabFiles));
     nUnpaired  = 0;
@@ -145,6 +186,24 @@ for s = 1:numel(sites)
         else                                      % Siemens
             wanted = [stem '_H2O' e];
         end
+        % ---- Site-specific exception: S6 --------------------------------
+        % Important_Notes.pdf (Big GABA, NITRC): at S6 water suppression was
+        % mistakenly left on while acquiring the GABA+ water references, so
+        % *GABA_68_H2O is unusable for subjects S01-S06. The data providers
+        % recommend substituting the MM-suppressed water reference
+        % (*GABA_80_H2O), the TEs being equivalent (68 ms).
+        %
+        % We follow the providers' documented recommendation. See D-15.
+        if strcmpi(site, 'S6')
+            subj = extractBefore(metabFiles(m).name, '_');
+            if ismember(upper(subj), {'S01','S02','S03','S04','S05','S06'})
+                wanted = strrep(wanted, '_68_H2O', '_80_H2O');
+                logmsg('    %s: using %s (documented S6 acquisition error)', ...
+                       subj, wanted);
+            end
+        end
+        % -----------------------------------------------------------------
+
         idx = find(strcmpi({refFiles.name}, wanted), 1);
         if isempty(idx)
             pairedRefs{m} = '';
@@ -182,6 +241,7 @@ for s = 1:numel(sites)
         [ok,~] = rmdir(outDir, 's');
         if ~ok
             outDir = [outDir '_' datestr(now,'yyyymmdd_HHMMSS')];
+            logmsg('  could not clear output dir; using %s', outDir);
         end
     end
     mkdir(outDir);
@@ -208,7 +268,14 @@ for s = 1:numel(sites)
                                 'status', 'ok', 'msg', ''); %#ok<SAGROW>
     catch ME
         % Never abort the batch on one site. Record and move on.
+        % Log the FULL stack: the message alone is rarely enough to diagnose a
+        % failure after an unattended run, and re-running a site to recover the
+        % trace costs 20-30 minutes.
         logmsg('  FAIL: %s', ME.message);
+        logmsg('        identifier: %s', ME.identifier);
+        for st = 1:numel(ME.stack)
+            logmsg('        at %s (line %d)', ME.stack(st).name, ME.stack(st).line);
+        end
         summary(end+1) = struct('site', site, 'nFound', numel(files), ...
                                 'status', 'error', 'msg', ME.message); %#ok<SAGROW>
     end

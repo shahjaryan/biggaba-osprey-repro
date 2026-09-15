@@ -389,3 +389,155 @@ parameter tuning. Every parameter change made after seeing results goes in
 
 - **Next experiment:** all 18 available in-scope sites. That is what converts this
   from signal to result, and it is roughly six hours of unattended compute.
+
+
+### D-15 — Documented acquisition error at S6; providers' workaround adopted
+
+- **Source:** `Important_Notes.pdf`, Big GABA release (NITRC), the only note in
+  the file.
+- **Issue:** at site S6, water suppression was mistakenly left on when acquiring
+  the GABA+ water references, so `*GABA_68_H2O` is unusable for subjects
+  **S01-S06** (6 of 12 subjects at that site).
+- **Providers' recommendation:** substitute the MM-suppressed water reference
+  `*GABA_80_H2O`, the echo times being equivalent (TE = 68 ms).
+- **Decision:** follow the recommendation. A reproduction should honour the data
+  provider's documented guidance rather than invent its own remedy. Implemented
+  as a site- and subject-specific exception in `run_osprey_batch.m`, which logs
+  each substitution as it happens.
+- **Alternatives considered and rejected:**
+  - *Ratio-only for S6* — would lose eddy-current correction for all 12 subjects,
+    making S6 processed differently from every other site regardless.
+  - *Exclude S6 entirely* — would reduce Siemens from 4 sites to 3, and Siemens
+    is already the weakest arm (D-13) and the one carrying D-14.
+- **Why this matters beyond bookkeeping:** Osprey uses `files_ref` for
+  eddy-current correction and lineshape referencing during PROCESSING, upstream
+  of quantification. A corrupted water reference can therefore distort the
+  processed spectra even for creatine-referenced results, which do not use water
+  scaling. **Unverified:** how much ECC actually moves GABAplus/tCr. Worth
+  measuring directly by processing S6 both ways.
+- **Related correction:** the `_68`/`_80` filename suffixes denote acquisition
+  type, not literal echo time. Mikkelsen 2017 reports MM-suppressed TE as 80 ms
+  for GE/Philips but 68 ms for Siemens, and this note confirms TE 68 for the
+  `_80` files at S6. Code comments describing a "TE filter" have been corrected;
+  the filter's behaviour (select GABA+, exclude MM-suppressed) is unchanged.
+- **Bearing on the headline claim:** moderate. Affects 6 of 48 Siemens subjects,
+  in the vendor arm carrying the main finding.
+
+---
+
+# FULL RUN — 17 sites, 192 subjects (2026-09-14)
+
+### D-16 — Siemens effect CONFIRMED across three independent sites
+
+**This is now a result, not a signal.**
+
+| vendor | sites | n | GABAplus/tCr | between-site CV |
+|---|---|---|---|---|
+| GE      | 6 | 67 | 0.3764 | 6.2% |
+| Philips | 8 | 89 | 0.3688 | 18.4% |
+| Siemens | 3 | 36 | **0.2703** | **2.8%** |
+
+Siemens site means: S1 0.2789, S5 0.2641, S6 0.2679. A between-site CV of 2.8%
+means the three sites agree with each other far more closely than GE's six do —
+this is not one anomalous site.
+
+**Magnitude vs the pre-registered prediction:**
+
+| | observed | published | Siemens runs |
+|---|---|---|---|
+| Siemens / mean(GE, Philips), all sites | 0.726 | 0.991 | **26.8% low** |
+| same, excluding the P3 outlier (D-17)  | 0.749 | 0.991 | **24.4% low** |
+
+Craven et al. (2022) predicted Osprey would give ~28% lower estimates on Siemens
+data. That figure was recorded in `target-values.md` before any data was
+processed. Observed 24-27% across three independent sites.
+
+**Ordering does not reproduce:** observed GE > Philips > Siemens; published
+GE > Siemens > Philips. Siemens moves from middle to last.
+
+**GE vs Philips DOES reproduce** once the P3 outlier is set aside:
+GE/Philips = 1.089 observed vs 1.108 published. The anomaly is confined to
+Siemens; the pipeline is not generically distorting vendor differences.
+
+**Mechanism — the dissociation is clean:**
+
+| vendor | subjects with GABA collapsed to ~0 |
+|---|---|
+| Siemens | 28 / 36 (**78%**) |
+| GE      |  2 / 67 (3%, all at G6) |
+| Philips |  0 / 89 (0%) |
+
+The GABA/co-edited-MM degeneracy (D-09) is almost universal on Siemens and
+essentially absent elsewhere. Siemens lowness and Siemens degeneracy co-occur
+this cleanly across 17 sites; the most likely reading is that they are the same
+phenomenon. **Establishing the causal link is the single most valuable remaining
+piece of work.**
+
+**Variability — within-site reproduces, between-site does not:**
+
+| quantity | observed | published |
+|---|---|---|
+| mean within-site CV | **11.1%** | 9.5% |
+| whole-dataset CV | 20.6% (17.3% excl. P3) | 12.0% |
+
+This is itself a clean finding: Osprey preserves the original's *within-site*
+precision while roughly doubling *between-site/vendor* spread. That is the
+signature of an algorithm effect rather than added noise, and it is consistent
+with Craven et al.'s variance partition (algorithm 33.8% vs vendor 4.0%).
+
+**Caveats that remain:**
+1. 3 of 7 published Siemens sites (D-13); S3 failed to process (D-18).
+2. 192 subjects / 17 sites against the published 272 / 24.
+3. Absolute scale still unreconciled with Gannet (D-08). Every comparison above
+   is a ratio or a CV, both scale-invariant, so this does not affect them.
+4. The P3 exclusion is POST-HOC. Both figures are reported throughout.
+
+### D-17 — P3 is a 5.2 SD outlier among Philips sites
+
+- **Observed:** P3 GABAplus/tCr = 0.5184. The other seven Philips sites span
+  0.2803-0.3813 (mean of site means 0.3468). P3 sits **5.2 SD** above them.
+- **Effect:** inflates Philips pooled mean 0.3454 -> 0.3688 and Philips
+  between-site CV 9.5% -> 18.4%. Excluding it, Philips between-site CV (9.5%)
+  matches GE's order of magnitude and GE/Philips lines up with the published
+  ratio (1.089 vs 1.108).
+- **Status:** UNEXPLAINED. Not yet excluded from the primary analysis; both
+  with- and without-P3 figures are reported.
+- **Next step:** inspect P3's fits and QM metrics directly. Candidate
+  explanations include a genuine site difference, an acquisition difference not
+  captured in the metadata, or a systematic fitting failure at that site.
+- **Rule:** do not drop P3 merely because removing it improves agreement with
+  the published values. That reasoning is how a reproduction becomes a
+  fit-to-target exercise. It is excluded only if an independent, documented
+  reason is found.
+
+### D-18 — S3 cannot be read by Osprey as distributed; EXCLUDED
+
+- **Observed:** `Index exceeds array bounds` (`MATLAB:badsubscript`) on
+  **dataset 1**, before any processing.
+- **Stack:** `read_twix_hdr:15` <- `mapVBVD:378` <- `io_loadspec_twix:36`
+  <- `osp_LoadTwix:66` <- `OspreyLoad:197`
+- **Root cause:** S3 is Siemens **VD** software with a **multi-RAID** TWIX
+  container (`Scan 1/2`); S1, S5 and S6 are **VB** (`single RAID file detected`).
+  At `read_twix_hdr.m:15`, `bufname = bufname{1}` fails because the preceding
+  `regexp(bufname,'^\w*','match')` returned empty - the file pointer was at the
+  wrong offset, i.e. the reader mis-navigated the multi-RAID structure. Osprey's
+  bundled mapVBVD claims VD support (CHANGELOG: "added support for VD13
+  multi-raid files") but fails on these files.
+- **Ruled out:** an earlier hypothesis that S3's two file-size groups
+  (6 x 186 MB, 6 x 94 MB) caused a mixed-dimension failure. Each group was run
+  separately and **both failed identically at the same line**, so the size split
+  is incidental (likely channel count) and not the cause.
+- **Decision: EXCLUDE S3.** Siemens remains at 3 sites / 36 subjects.
+- **Alternatives considered and rejected:**
+  - *Convert via spec2nii to NIfTI-MRS* (Osprey reads it natively). Rejected for
+    the primary analysis: S3 would then enter through a DIFFERENT input path
+    than the other 16 sites, so any difference in its numbers would be
+    attributable either to the site or to the conversion, with no way to
+    separate them - in the vendor arm carrying the headline finding. Acceptable
+    only as an explicitly labelled sensitivity analysis, never pooled.
+  - *Update mapVBVD from upstream.* A third modification to the toolchain with
+    unknown interactions with Osprey.
+- **Reportable finding in its own right:** one of the four available Siemens
+  sites cannot be read by the analysis tool as distributed, and the error message
+  gives no indication of the cause. A user following the documented path hits a
+  hard failure with no diagnostic path forward.
