@@ -20,6 +20,9 @@ ospreyDir = fullfile(getenv('USERPROFILE'), 'Documents', 'osprey');
 repoDir   = fileparts(fileparts(mfilename('fullpath')));
 dataRoot  = fullfile(repoDir, 'data');
 outRoot   = fullfile(repoDir, 'results');
+if ~isempty(RUN_LABEL)
+    outRoot = fullfile(outRoot, RUN_LABEL);
+end
 logFile   = fullfile(outRoot, 'batch_log.txt');
 
 % IN-SCOPE SITES ONLY.
@@ -44,6 +47,22 @@ sites = { 'G1','G4','G5','G6','G7','G8', ...                     % GE      (6)
 
 % Restrict the run, e.g. {'S1'} for a single site. Empty = all of the above.
 ONLY_SITES = {};
+
+% ---------------------------------------------------------------------------
+% RUN CONFIGURATION
+%
+% RUN_LABEL separates output from different analysis configurations:
+%   ''              -> results/<site>                  (primary run, default range)
+%   'gannet_range'  -> results/gannet_range/<site>     (fit-range sensitivity)
+%
+% FIT_RANGE is the one variable under test (D-07):
+%   []            -> use Osprey's default, [0.2 4.2] (OspreySettings.m:42)
+%   [2.79 4.10]   -> Gannet's difference-spectrum fit range (Mikkelsen 2017)
+%
+% Everything else is held fixed so the comparison isolates the fit range.
+% ---------------------------------------------------------------------------
+RUN_LABEL = '';
+FIT_RANGE = [];
 
 % Skip sites that already have results. Makes a long unattended run resumable:
 % if it dies at site 14, restarting picks up where it stopped rather than
@@ -76,6 +95,12 @@ if ~isfolder(outRoot); mkdir(outRoot); end
 fid = fopen(logFile, 'a');
 logmsg = @(varargin) logBoth(fid, varargin{:});
 logmsg('==== batch started %s ====', datestr(now));
+if isempty(RUN_LABEL)
+    logmsg('     config: PRIMARY  fit.range = Osprey default [0.2 4.2]');
+else
+    logmsg('     config: %s  fit.range = [%.2f %.2f]', RUN_LABEL, FIT_RANGE(1), FIT_RANGE(2));
+end
+logmsg('     output: %s', outRoot);
 
 %% ------------------------------------------------------------------
 %  Shared options - identical for every site.
@@ -92,7 +117,10 @@ opts.fit.method            = 'Osprey';
 opts.fit.style             = 'Separate';   % Osprey forces this for MEGA
 opts.fit.includeMetabs     = {'default'};
 opts.fit.coMM3             = '3to2MM';
-opts.fit.FWHMcoMM3         = 14;          % required companion field to coMM3
+opts.fit.FWHMcoMM3         = 14;
+if ~isempty(FIT_RANGE)
+    opts.fit.range = FIT_RANGE;
+end          % required companion field to coMM3
 opts.saveLCM               = 0;
 opts.savejMRUI             = 0;
 opts.saveVendor            = 0;
