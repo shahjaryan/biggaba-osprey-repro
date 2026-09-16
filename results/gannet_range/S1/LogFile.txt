@@ -1,0 +1,18 @@
+D:iggaba-osprey-reproesultsTimestamp September 14, 2026 23:22:43 Osprey 2.9.6
+Timestamp September 14, 2026 23:22:43 Osprey 2.9.6  OspreyLoad
+Loading raw data from dataset   1 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at io_loadspec_twix (line 219)
+        at osp_LoadTwix (line 66)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+--- S5 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+Spectral fitting parameters will not be saved (default). Please indicate otherwise in the csv-file or the GUI 

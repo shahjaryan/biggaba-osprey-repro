@@ -1,0 +1,33 @@
+D:iggaba-osprey-reproesultsTimestamp September 14, 2026 23:22:53 Osprey 2.9.6
+Timestamp September 14, 2026 23:22:53 Osprey 2.9.6  OspreyLoad
+Loading raw data from dataset   1 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+    40.6 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     2.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at op_addrcvrs (line 138)
+        at osp_combineCoils (line 227)
+        at osp_LoadTwix (line 138)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+--- S6 ---
+  TE68: 12 metabolite, 24 reference (of 48 files matching *.dat)
+    S01: using S01_GABA_80_H2O.dat (documented S6 acquisition error)
+    S02: using S02_GABA_80_H2O.dat (documented S6 acquisition error)
+    S03: using S03_GABA_80_H2O.dat (documented S6 acquisition error)
+    S04: using S04_GABA_80_H2O.dat (documented S6 acquisition error)
+    S05: using S05_GABA_80_H2O.dat (documented S6 acquisition error)
+    S06: using S06_GABA_80_H2O.dat (documented S6 acquisition error)
+Spectral fitting parameters will not be saved (default). Please indicate otherwise in the csv-file or the GUI 

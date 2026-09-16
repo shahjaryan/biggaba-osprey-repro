@@ -24,8 +24,8 @@ clear; close all; clc;
 %
 % Everything else is held fixed so the comparison isolates the fit range.
 
-RUN_LABEL = '';        % '' or 'gannet_range'
-FIT_RANGE = [];        % [] or [2.79 4.10]
+RUN_LABEL = 'gannet_range';
+FIT_RANGE = [2.79 4.10];
 
 ONLY_SITES    = {};    % e.g. {'S1'} to restrict; {} = all in-scope sites
 SKIP_EXISTING = true;  % resume: skip sites that already have an MRSCont .mat

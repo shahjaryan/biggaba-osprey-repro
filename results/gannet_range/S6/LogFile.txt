@@ -1,0 +1,40 @@
+D:iggaba-osprey-reproesultsTimestamp September 14, 2026 23:22:56 Osprey 2.9.6
+Timestamp September 14, 2026 23:22:56 Osprey 2.9.6  OspreyLoad
+Loading raw data from dataset   1 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at io_loadspec_twix (line 219)
+        at osp_LoadTwix (line 66)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+==== batch finished 14-Sep-2026 23:23:03 ====
+ok=11  error=6  missing=0  skipped=0
+     <strong>site</strong>     <strong>nFound</strong>     <strong>status</strong>             <strong>msg</strong>        
+    <strong>______</strong>    <strong>______</strong>    <strong>_________</strong>    <strong>__________________</strong>
+
+    {'G1'}       7      {'ok'   }    {0×0 char        }
+    {'G4'}      12      {'ok'   }    {0×0 char        }
+    {'G5'}      12      {'error'}    {'Out of memory.'}
+    {'G6'}      12      {'ok'   }    {0×0 char        }
+    {'G7'}      12      {'error'}    {'Out of memory.'}
+    {'G8'}      12      {'error'}    {'Out of memory.'}
+    {'P1'}       9      {'ok'   }    {0×0 char        }
+    {'P3'}      12      {'ok'   }    {0×0 char        }
+    {'P4'}      12      {'ok'   }    {0×0 char        }
+    {'P5'}       8      {'ok'   }    {0×0 char        }
+    {'P6'}      12      {'ok'   }    {0×0 char        }
+    {'P7'}      12      {'ok'   }    {0×0 char        }
+    {'P8'}      12      {'ok'   }    {0×0 char        }
+    {'P9'}      12      {'ok'   }    {0×0 char        }
+    {'S1'}      12      {'error'}    {'Out of memory.'}
+    {'S5'}      12      {'error'}    {'Out of memory.'}
+    {'S6'}      12      {'error'}    {'Out of memory.'}
+
+
+Every site that did not return ok needs an entry in docs/discrepancy-log.md.

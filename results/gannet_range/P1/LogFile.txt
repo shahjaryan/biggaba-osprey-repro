@@ -1,0 +1,724 @@
+D:iggaba-osprey-reproesultsTimestamp September 14, 2026 21:58:18 Osprey 2.9.6
+Timestamp September 14, 2026 21:58:18 Osprey 2.9.6  OspreyLoad
+Loading raw data from dataset   1 out of   9 total datasets...
+Loading raw data from dataset   2 out of   9 total datasets...
+Loading raw data from dataset   3 out of   9 total datasets...
+Loading raw data from dataset   4 out of   9 total datasets...
+Loading raw data from dataset   5 out of   9 total datasets...
+Loading raw data from dataset   6 out of   9 total datasets...
+Loading raw data from dataset   7 out of   9 total datasets...
+Loading raw data from dataset   8 out of   9 total datasets...
+Loading raw data from dataset   9 out of   9 total datasets...
+
+... done.
+ Elapsed time 3.060396 seconds
+Data type Philips SDAT is already coil-combined.
+Timestamp September 14, 2026 21:58:29 Osprey 2.9.6  OspreyProcess
+Processing data from dataset   1 out of   9 total datasets...
+Processing data from dataset   2 out of   9 total datasets...
+Processing data from dataset   3 out of   9 total datasets...
+Processing data from dataset   4 out of   9 total datasets...
+Processing data from dataset   5 out of   9 total datasets...
+Processing data from dataset   6 out of   9 total datasets...
+Processing data from dataset   7 out of   9 total datasets...
+Processing data from dataset   8 out of   9 total datasets...
+Processing data from dataset   9 out of   9 total datasets...
+
+... done.
+ Elapsed time 154.179302 seconds
+Timestamp September 14, 2026 22:01:13 Osprey 2.9.6  OspreyFit
+Fitting metabolite spectra from dataset   1 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   2 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   3 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   4 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   5 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   6 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   7 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   8 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset   9 out of   9 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Running final preliminary analysis step with full basis set...
+
+... done.
+ Elapsed time 300.417758 seconds
+
+Fitting water reference spectra from dataset   1 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  94  1015   1.1e+03        -19     -0.017        0.2     0.0099       1.3e+03           4.9e+07      2.4e+11       10     0.35      1.4   *full Jacobian update  
+
+Fitting water reference spectra from dataset   2 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  93  1012     1e+03         34      0.034      0.094     0.0045       1.2e+03           1.2e+06        2e+11        1      -12   -0.041   full Jacobian update  
+
+Fitting water reference spectra from dataset   3 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  94  1015   8.4e+02   -5.9e-05     -7e-08    0.00083    2.6e-05       1.2e+03           2.3e+03      2.6e+11       10    0.074      6.8   *full Jacobian update  
+
+Fitting water reference spectra from dataset   4 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  94  1013     2e+04      0.049    2.4e-06      0.015     0.0012       2.6e+03           6.5e+05      2.7e+11       10   -0.086     -5.8   full Jacobian update  
+
+Fitting water reference spectra from dataset   5 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  93  1012   1.9e+03         30      0.016      0.037     0.0017       1.3e+03           1.7e+05        3e+11        1      -20   -0.025   full Jacobian update  
+
+Fitting water reference spectra from dataset   6 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  93  1014   1.4e+03      5e+04         35        2.4       0.27       1.3e+03             1e+07      2.5e+11        1      -72  -0.0069   full Jacobian update  
+
+Fitting water reference spectra from dataset   7 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  94  1015   6.6e+03      0.048    7.3e-06    0.00087    8.4e-05       2.4e+03           8.9e+03      2.9e+11       10     -2.9    -0.17   full Jacobian update  
+
+Fitting water reference spectra from dataset   8 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  93  1014     5e+02       0.46    0.00092      0.005    0.00024       1.2e+03           8.6e+03      1.9e+11        1      -16   -0.031   full Jacobian update  
+
+Fitting water reference spectra from dataset   9 out of   9 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  94  1013   1.4e+03       -9.9    -0.0072       0.19      0.011       1.1e+03           3.7e+07      2.1e+11       10     0.17        3   *full Jacobian update  
+... done.
+ Elapsed time 7.515585 seconds
+
+... done.
+ Elapsed time 307.933343 seconds
+Writing table to file = D:\biggaba-osprey-repro\results\gannet_range\P1\QM_processed_spectra.tsv
+Writing table to file = D:\biggaba-osprey-repro\results\gannet_range\P1\QM_processed_spectra.json
+Timestamp September 14, 2026 22:06:31 Osprey 2.9.6  OspreyQuantify
+
+Quantifying dataset   1 out of   9 total datasets...
+Quantifying dataset   2 out of   9 total datasets...
+Quantifying dataset   3 out of   9 total datasets...
+Quantifying dataset   4 out of   9 total datasets...
+Quantifying dataset   5 out of   9 total datasets...
+Quantifying dataset   6 out of   9 total datasets...
+Quantifying dataset   7 out of   9 total datasets...
+Quantifying dataset   8 out of   9 total datasets...
+Quantifying dataset   9 out of   9 total datasets...
+
+... done.
+ Elapsed time 0.030135 seconds

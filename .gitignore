@@ -1,23 +1,41 @@
-# Data - never commit
+# Data - never committed. See data/README.md for how to obtain it.
 data/*
 !data/README.md
 
-# Results - large binaries and derived outputs
-results/*
-!results/.gitkeep
+# Large binaries and raw Osprey containers: regenerable from data + code.
 *.mat
 *.pdf
-
-# Keep the small derived tables that the writeup cites
-!results/headline_comparison.csv
-!results/variance_decomposition.csv
-!results/within_site_cv.csv
-!results/batch_summary.csv
-!results/batch_log.txt
-
-# MATLAB / R cruft
 *.asv
 slprj/
+
+# Results: exclude by default, then allow back the small derived files that
+# every claim in the documentation rests on. Anyone cloning this repo gets the
+# numbers behind the findings without the 81 MB containers that produced them.
+results/*
+!results/.gitkeep
+!results/batch_log.txt
+!results/batch_summary.csv
+!results/tables/
+!results/tables/*.csv
+!results/*/
+!results/*/QM_processed_spectra.tsv
+!results/*/QM_processed_spectra.json
+!results/*/job_*.m
+!results/*/QuantifyResults/
+!results/*/QuantifyResults/*.tsv
+!results/gannet_range/
+!results/gannet_range/batch_log.txt
+!results/gannet_range/batch_summary.csv
+!results/gannet_range/*/
+!results/gannet_range/*/QM_processed_spectra.tsv
+!results/gannet_range/*/QuantifyResults/
+!results/gannet_range/*/QuantifyResults/*.tsv
+
+# Keep diagnostic scratch out
+results/S3_diagnostic/
+results/smoke_test/
+
+# R / editor cruft
 .Rhistory
 .RData
 .Rproj.user/

@@ -1,0 +1,97 @@
+==== batch started 14-Sep-2026 21:23:31 ====
+     config: gannet_range   fit.range = [2.79 4.10]
+     sites : G1, G4, G5, G6, G7, G8, P1, P3, P4, P5, P6, P7, P8, P9, S1, S5, S6
+     output: D:\biggaba-osprey-repro\results\gannet_range
+--- G1 ---
+  TE68: 7 metabolite, 0 reference (of 14 files matching *.7)
+  OK: 7 dataset(s) in 10.6 min
+--- G4 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 16.4 min
+--- G5 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at GELoad (line 380)
+        at io_loadspec_GE (line 31)
+        at osp_LoadP (line 60)
+        at OspreyLoad (line 228)
+        at run_osprey_batch (line 280)
+--- G6 ---
+  TE68: 12 metabolite, 0 reference (of 12 files matching *.7)
+  OK: 12 dataset(s) in 7.5 min
+--- G7 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at GELoad (line 380)
+        at io_loadspec_GE (line 31)
+        at osp_LoadP (line 60)
+        at OspreyLoad (line 228)
+        at run_osprey_batch (line 280)
+--- G8 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at GELoad (line 371)
+        at io_loadspec_GE (line 31)
+        at osp_LoadP (line 60)
+        at OspreyLoad (line 228)
+        at run_osprey_batch (line 280)
+--- P1 ---
+  TE68: 9 metabolite, 9 reference (of 36 files matching *.SDAT)
+  OK: 9 dataset(s) in 8.6 min
+--- P3 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 11.6 min
+--- P4 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 10.9 min
+--- P5 ---
+  TE68: 8 metabolite, 8 reference (of 32 files matching *.SDAT)
+  OK: 8 dataset(s) in 6.5 min
+--- P6 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 10.0 min
+--- P7 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 13.3 min
+--- P8 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 11.8 min
+--- P9 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.SDAT)
+  OK: 12 dataset(s) in 11.6 min
+--- S1 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at io_loadspec_twix (line 219)
+        at osp_LoadTwix (line 66)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+--- S5 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at op_addrcvrs (line 138)
+        at osp_combineCoils (line 227)
+        at osp_LoadTwix (line 138)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+--- S6 ---
+  TE68: 12 metabolite, 24 reference (of 48 files matching *.dat)
+    S01: using S01_GABA_80_H2O.dat (documented S6 acquisition error)
+    S02: using S02_GABA_80_H2O.dat (documented S6 acquisition error)
+    S03: using S03_GABA_80_H2O.dat (documented S6 acquisition error)
+    S04: using S04_GABA_80_H2O.dat (documented S6 acquisition error)
+    S05: using S05_GABA_80_H2O.dat (documented S6 acquisition error)
+    S06: using S06_GABA_80_H2O.dat (documented S6 acquisition error)
+  FAIL: Out of memory.
+        identifier: MATLAB:nomem
+        at io_loadspec_twix (line 219)
+        at osp_LoadTwix (line 66)
+        at OspreyLoad (line 197)
+        at run_osprey_batch (line 280)
+==== batch finished 14-Sep-2026 23:23:03 ====
+ok=11  error=6  missing=0  skipped=0

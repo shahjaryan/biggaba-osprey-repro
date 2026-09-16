@@ -1,0 +1,11 @@
+D:iggaba-osprey-reproesultsTimestamp September 14, 2026 15:53:47 Osprey 2.9.6
+Timestamp September 14, 2026 15:53:47 Osprey 2.9.6  OspreyLoad
+Loading raw data from dataset   1 out of  12 total datasets...
+Software version: VD (!?)
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/2, read all mdhs:
+    16.9 MB read in    0 s
+  FAIL: Index exceeds array bounds.
+--- S5 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+Spectral fitting parameters will not be saved (default). Please indicate otherwise in the csv-file or the GUI 
