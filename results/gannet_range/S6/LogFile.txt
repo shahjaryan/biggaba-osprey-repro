@@ -1,5 +1,5 @@
-D:iggaba-osprey-reproesultsTimestamp September 14, 2026 23:22:56 Osprey 2.9.6
-Timestamp September 14, 2026 23:22:56 Osprey 2.9.6  OspreyLoad
+D:iggaba-osprey-reproesultsTimestamp September 16, 2026 14:38:43 Osprey 2.9.6
+Timestamp September 16, 2026 14:38:43 Osprey 2.9.6  OspreyLoad
 Loading raw data from dataset   1 out of  12 total datasets...
 Software version: VB (!?)
 Read raw data correction factors
@@ -7,34 +7,555 @@ Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
 Scan 1/1, read all mdhs:
    321.7 MB read in    0 s
 single RAID file detected.
-  FAIL: Out of memory.
-        identifier: MATLAB:nomem
-        at io_loadspec_twix (line 219)
-        at osp_LoadTwix (line 66)
-        at OspreyLoad (line 197)
-        at run_osprey_batch (line 280)
-==== batch finished 14-Sep-2026 23:23:03 ====
-ok=11  error=6  missing=0  skipped=0
-     <strong>site</strong>     <strong>nFound</strong>     <strong>status</strong>             <strong>msg</strong>        
-    <strong>______</strong>    <strong>______</strong>    <strong>_________</strong>    <strong>__________________</strong>
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   2 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   3 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   4 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   5 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   6 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   7 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   8 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset   9 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset  10 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset  11 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Loading raw data from dataset  12 out of  12 total datasets...
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+   321.7 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
+Software version: VB (!?)
+Read raw data correction factors
+Reader version: 1496740353 (UTC: 06-Jun-2017 09:12:33)
+Scan 1/1, read all mdhs:
+     8.5 MB read in    0 s
+single RAID file detected.
+No integrated water reference data found.  Returning empty field
 
-    {'G1'}       7      {'ok'   }    {0×0 char        }
-    {'G4'}      12      {'ok'   }    {0×0 char        }
-    {'G5'}      12      {'error'}    {'Out of memory.'}
-    {'G6'}      12      {'ok'   }    {0×0 char        }
-    {'G7'}      12      {'error'}    {'Out of memory.'}
-    {'G8'}      12      {'error'}    {'Out of memory.'}
-    {'P1'}       9      {'ok'   }    {0×0 char        }
-    {'P3'}      12      {'ok'   }    {0×0 char        }
-    {'P4'}      12      {'ok'   }    {0×0 char        }
-    {'P5'}       8      {'ok'   }    {0×0 char        }
-    {'P6'}      12      {'ok'   }    {0×0 char        }
-    {'P7'}      12      {'ok'   }    {0×0 char        }
-    {'P8'}      12      {'ok'   }    {0×0 char        }
-    {'P9'}      12      {'ok'   }    {0×0 char        }
-    {'S1'}      12      {'error'}    {'Out of memory.'}
-    {'S5'}      12      {'error'}    {'Out of memory.'}
-    {'S6'}      12      {'error'}    {'Out of memory.'}
+... done.
+ Elapsed time 91.107538 seconds
+Timestamp September 16, 2026 14:40:31 Osprey 2.9.6  OspreyProcess
+Processing data from dataset   1 out of  12 total datasets...
+Processing data from dataset   2 out of  12 total datasets...
+Processing data from dataset   3 out of  12 total datasets...
+Processing data from dataset   4 out of  12 total datasets...
+Processing data from dataset   5 out of  12 total datasets...
+Processing data from dataset   6 out of  12 total datasets...
+Processing data from dataset   7 out of  12 total datasets...
+Processing data from dataset   8 out of  12 total datasets...
+Processing data from dataset   9 out of  12 total datasets...
+Processing data from dataset  10 out of  12 total datasets...
+Processing data from dataset  11 out of  12 total datasets...
+Processing data from dataset  12 out of  12 total datasets...
 
+... done.
+ Elapsed time 224.266343 seconds
+Timestamp September 16, 2026 14:44:32 Osprey 2.9.6  OspreyFit
+Fitting metabolite spectra from dataset   1 out of  12 total datasets...
 
-Every site that did not return ok needs an entry in docs/discrepancy-log.md.
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset   2 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   3 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   4 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset   5 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset   6 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   7 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   8 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Fitting metabolite spectra from dataset   9 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset  10 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset  11 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+Positive dir derivative in projection 
+Using the backtracking step
+Fitting metabolite spectra from dataset  12 out of  12 total datasets...
+
+Running initial referencing...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+Initial was performed on another Subspec or the center voxel (MRSI)...
+Running preliminary analysis with reduced basis set...
+Running final preliminary analysis step with full basis set...
+
+... done.
+ Elapsed time 236.125962 seconds
+
+Fitting water reference spectra from dataset   1 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  43   439   3.4e+02        NaN        NaN    8.5e-11    3.8e-09        0.0015                14      1.8e+11    1e+05      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   2 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  41   379   1.5e+02        NaN        NaN    5.2e-11    5.1e-08       0.00092               5.3      1.8e+11    1e+06      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   3 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  31   329   1.5e+03        NaN        NaN    5.9e-11    6.8e-08        0.0018                18      3.2e+11    1e+06      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   4 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  49   459   2.6e+03        NaN        NaN    2.8e-11    3.1e-08        0.0075                75      2.5e+11    1e+07      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   5 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  28   248   9.4e+02        NaN        NaN    7.8e-11      8e-08        0.0016                14      2.4e+11    1e+06      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   6 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  34   352   6.9e+02        NaN        NaN    1.9e-11    1.2e-08       0.00057               5.5      2.4e+11    1e+05      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   7 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  33   313   1.9e+02        NaN        NaN    4.5e-11    2.3e-08       0.00037               3.5        2e+11    1e+05      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   8 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  40   400   4.4e+02        NaN        NaN      7e-11    7.5e-08        0.0022                21      2.3e+11    1e+06      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset   9 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  31   291   3.8e+03        NaN        NaN    2.2e-11    2.6e-08        0.0025               4.7      3.1e+11    1e+07      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset  10 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  25   245   6.1e+02        NaN        NaN    8.4e-11    8.6e-08       0.00088               7.3      2.2e+11    1e+05      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset  11 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  30   308   2.7e+03        NaN        NaN    9.7e-11    8.5e-08         0.012           1.1e+02      2.6e+11    1e+06      NaN      NaN   absolute step size  
+
+Fitting water reference spectra from dataset  12 out of  12 total datasets...
+
+                                                 Norm   Rel norm   First-order   Rel first-order      Largest                              Comment
+  I#    F#      f(x)      Df(x)   relDf(x)    of step    of step    optimality        optimality   eigenvalue   lambda      rho    ratio          
+  28   268     1e+03        NaN        NaN    7.4e-11    7.9e-08         0.002                20      2.7e+11    1e+05      NaN      NaN   absolute step size  
+... done.
+ Elapsed time 2.997533 seconds
+
+... done.
+ Elapsed time 239.123495 seconds
+Writing table to file = D:\biggaba-osprey-repro\results\gannet_range\S6\QM_processed_spectra.tsv
+Writing table to file = D:\biggaba-osprey-repro\results\gannet_range\S6\QM_processed_spectra.json
+Timestamp September 16, 2026 14:48:51 Osprey 2.9.6  OspreyQuantify
+
+Quantifying dataset   1 out of  12 total datasets...
+Quantifying dataset   2 out of  12 total datasets...
+Quantifying dataset   3 out of  12 total datasets...
+Quantifying dataset   4 out of  12 total datasets...
+Quantifying dataset   5 out of  12 total datasets...
+Quantifying dataset   6 out of  12 total datasets...
+Quantifying dataset   7 out of  12 total datasets...
+Quantifying dataset   8 out of  12 total datasets...
+Quantifying dataset   9 out of  12 total datasets...
+Quantifying dataset  10 out of  12 total datasets...
+Quantifying dataset  11 out of  12 total datasets...
+Quantifying dataset  12 out of  12 total datasets...
+
+... done.
+ Elapsed time 0.023287 seconds

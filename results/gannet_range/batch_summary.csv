@@ -1,18 +1,18 @@
 site,nFound,status,msg
-G1,7,ok,
-G4,12,ok,
-G5,12,error,Out of memory.
-G6,12,ok,
-G7,12,error,Out of memory.
-G8,12,error,Out of memory.
-P1,9,ok,
-P3,12,ok,
-P4,12,ok,
-P5,8,ok,
-P6,12,ok,
-P7,12,ok,
-P8,12,ok,
-P9,12,ok,
-S1,12,error,Out of memory.
-S5,12,error,Out of memory.
-S6,12,error,Out of memory.
+G1,0,skipped,existing results
+G4,0,skipped,existing results
+G5,12,ok,
+G6,0,skipped,existing results
+G7,12,ok,
+G8,12,ok,
+P1,0,skipped,existing results
+P3,0,skipped,existing results
+P4,0,skipped,existing results
+P5,0,skipped,existing results
+P6,0,skipped,existing results
+P7,0,skipped,existing results
+P8,0,skipped,existing results
+P9,0,skipped,existing results
+S1,12,ok,
+S5,12,ok,
+S6,12,ok,

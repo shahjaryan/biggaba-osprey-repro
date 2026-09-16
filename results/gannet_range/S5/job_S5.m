@@ -1,5 +1,5 @@
 % Auto-generated Osprey job file
-% Generated 2026-09-14 23:22:53
+% Generated 2026-09-16 14:25:30
 % Do not edit by hand - regenerate from the batch script.
 
 seqType = 'MEGA';

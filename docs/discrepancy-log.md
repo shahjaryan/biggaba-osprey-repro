@@ -541,3 +541,80 @@ with Craven et al.'s variance partition (algorithm 33.8% vs vendor 4.0%).
   sites cannot be read by the analysis tool as distributed, and the error message
   gives no indication of the cause. A user following the documented path hits a
   hard failure with no diagnostic path forward.
+
+---
+
+# FIT-RANGE SENSITIVITY ANALYSIS — all 17 sites (2026-09-16)
+
+### D-19 — Fit range accounts for P3, but NOT for the Siemens effect
+
+The single planned sensitivity analysis (D-07): identical data, identical basis
+set, identical MM3 model, one variable changed — `opts.fit.range` from Osprey's
+default `[0.2 4.2]` to Gannet's `[2.79 4.10]`. All 17 sites, both ranges.
+
+**Result 1 — the Siemens effect is ROBUST.**
+
+| | default range | Gannet range | published |
+|---|---|---|---|
+| GE / Siemens | 1.392 | **1.378** | 1.060 |
+| Siemens vs mean(GE, Philips) | 0.726 | **0.773** | 0.991 |
+| Siemens runs low by | 26.8% | **22.0%** | — |
+
+Narrowing the fit range moves the Siemens gap by about 5 percentage points and
+leaves it overwhelmingly intact. The most obvious confound available has been
+tested and does not explain the finding. **D-16 is strengthened.**
+
+**Result 2 — P3's anomaly is EXPLAINED as fit-range dependent (resolves D-17).**
+
+| | default range | Gannet range |
+|---|---|---|
+| P3 mean | 0.5184 | 0.3121 |
+| other 7 Philips sites | 0.3468 +/- 0.0330 | 0.2939 +/- 0.0185 |
+| **P3 z-score** | **+5.20** | **+0.99** |
+| Philips between-site CV | 18.4% | **6.2%** |
+
+P3 changes by **-39.8%**, by far the largest shift of any site (others: -4.7% to
+-20.0%), and becomes an ordinary Philips site. Its anomaly was an artifact of
+the wide fit range, not a property of the site.
+
+*Why* the wide range inflates P3 specifically is still not established. Residual
+water remains the leading candidate — P3 is a +5.7 SD outlier on it (D-17), and
+across the 8 Philips sites residual water correlates r = -0.844 with the size of
+the fit-range effect. But **excluding P3 that correlation falls to r = -0.181**,
+so once again the relationship is carried entirely by P3 itself. Co-occurrence,
+not a demonstrated mechanism. Stated as far as the evidence goes and no further.
+
+**Result 3 — the proposed mechanism for D-16 is WEAKENED.**
+
+| | default range | Gannet range |
+|---|---|---|
+| subjects with GABA collapsed to ~0 | 30 / 192 | **4 / 192** |
+| Siemens runs low by | 26.8% | 22.0% |
+
+The GABA/co-edited-MM degeneracy (D-09) **almost disappears** at the narrow range
+— MM09 falls outside the fitting window, so the 3:2 constraint no longer binds —
+yet **Siemens still runs low**. The two phenomena are therefore largely
+decoupled: the degeneracy is not required for the Siemens effect.
+
+D-16 proposed that the Siemens lowness and the Siemens-specific degeneracy were
+likely the same phenomenon. **That hypothesis is now substantially weakened by
+its own planned test.** The Siemens effect is real and robust; its mechanism is
+open.
+
+**Other effects of the narrower range:**
+
+| quantity | default | Gannet | published |
+|---|---|---|---|
+| whole-dataset CV | 20.6% | 19.3% | 12.0% |
+| mean within-site CV | 11.1% | **13.6%** | 9.5% |
+| GE / Philips | 1.021 | **1.140** | 1.108 |
+| Philips between-site CV | 18.4% | **6.2%** | — |
+
+GE/Philips moves *closer* to the published ratio (1.140 vs 1.108) and Philips
+between-site variability drops sharply, but within-site precision gets **worse**
+(13.6% vs 11.1%) — fewer data points in the fit. Neither range is uniformly
+better; they trade between-site agreement against within-site precision.
+
+**Reporting rule:** both ranges are reported throughout. The default range
+remains the primary analysis because it is what Osprey does out of the box, which
+is what a reader reproducing this would get.

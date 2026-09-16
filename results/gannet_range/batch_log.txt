@@ -95,3 +95,55 @@
         at run_osprey_batch (line 280)
 ==== batch finished 14-Sep-2026 23:23:03 ====
 ok=11  error=6  missing=0  skipped=0
+==== batch started 16-Sep-2026 13:53:21 ====
+     config: gannet_range   fit.range = [2.79 4.10]
+     sites : G1, G4, G5, G6, G7, G8, P1, P3, P4, P5, P6, P7, P8, P9, S1, S5, S6
+     output: D:\biggaba-osprey-repro\results\gannet_range
+--- G1 ---
+  SKIP: already processed
+--- G4 ---
+  SKIP: already processed
+--- G5 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 6.9 min
+--- G6 ---
+  SKIP: already processed
+--- G7 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 6.8 min
+--- G8 ---
+  TE68: 12 metabolite, 0 reference (of 24 files matching *.7)
+  OK: 12 dataset(s) in 6.6 min
+--- P1 ---
+  SKIP: already processed
+--- P3 ---
+  SKIP: already processed
+--- P4 ---
+  SKIP: already processed
+--- P5 ---
+  SKIP: already processed
+--- P6 ---
+  SKIP: already processed
+--- P7 ---
+  SKIP: already processed
+--- P8 ---
+  SKIP: already processed
+--- P9 ---
+  SKIP: already processed
+--- S1 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  OK: 12 dataset(s) in 11.8 min
+--- S5 ---
+  TE68: 12 metabolite, 12 reference (of 48 files matching *.dat)
+  OK: 12 dataset(s) in 13.2 min
+--- S6 ---
+  TE68: 12 metabolite, 24 reference (of 48 files matching *.dat)
+    S01: using S01_GABA_80_H2O.dat (documented S6 acquisition error)
+    S02: using S02_GABA_80_H2O.dat (documented S6 acquisition error)
+    S03: using S03_GABA_80_H2O.dat (documented S6 acquisition error)
+    S04: using S04_GABA_80_H2O.dat (documented S6 acquisition error)
+    S05: using S05_GABA_80_H2O.dat (documented S6 acquisition error)
+    S06: using S06_GABA_80_H2O.dat (documented S6 acquisition error)
+  OK: 12 dataset(s) in 10.7 min
+==== batch finished 16-Sep-2026 14:49:25 ====
+ok=6  error=0  missing=0  skipped=11
