@@ -1,5 +1,25 @@
 # Data
 
+## Data citation and acknowledgement
+
+This project analyses the **Big GABA** dataset. Its terms require that any use
+cite the following, and acknowledge the funding below. If you use this
+repository's results, cite these as well as the repository itself.
+
+> Mikkelsen M et al. Big GABA: Edited MR spectroscopy at 24 research sites.
+> *NeuroImage* 2017;159:32-45. doi:[10.1016/j.neuroimage.2017.07.021](https://doi.org/10.1016/j.neuroimage.2017.07.021)
+>
+> Mikkelsen M et al. Big GABA II: Water-referenced edited MR spectroscopy at 25
+> research sites. *NeuroImage* 2019;191:537-548. doi:[10.1016/j.neuroimage.2019.02.059](https://doi.org/10.1016/j.neuroimage.2019.02.059)
+>
+> Povazan M et al. Comparison of multivendor single-voxel MR spectroscopy data
+> acquired in healthy brain at 26 sites. *Radiology* 2020;295:171-180.
+> doi:[10.1148/radiol.2020191037](https://doi.org/10.1148/radiol.2020191037)
+
+**Acknowledgement:** this work uses data supported by NIH grant **R01 EB016089**.
+
+---
+
 Data are **not** committed. Download them here.
 
 ## Source
